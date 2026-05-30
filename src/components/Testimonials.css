@@ -1,0 +1,52 @@
+.testimonials-section {
+  padding: 112px 0;
+  background: var(--ivory-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.testimonial-slider {
+  max-width: 900px; margin: 0 auto; text-align: center;
+  transition: opacity 0.4s ease;
+}
+.testimonial-mark {
+  font-family: var(--ff-display);
+  font-size: 80px; font-weight: 300;
+  color: var(--sienna); opacity: 0.3;
+  line-height: 0.6; margin-bottom: 32px; display: block;
+}
+.testimonial-quote {
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 300; font-style: italic;
+  color: var(--ink); line-height: 1.45;
+  letter-spacing: -0.3px; margin-bottom: 40px;
+}
+.testimonial-attribution {
+  display: flex; align-items: center;
+  justify-content: center; gap: 20px;
+}
+.t-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 16px; font-weight: 600;
+  color: var(--white); flex-shrink: 0;
+}
+.t-name {
+  font-family: var(--ff-body);
+  font-size: 13px; font-weight: 500;
+  color: var(--ink); letter-spacing: 0.3px;
+}
+.t-role { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.testimonial-dots {
+  display: flex; justify-content: center; gap: 8px; margin-top: 48px;
+}
+.t-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--border-d); cursor: pointer;
+  transition: background 0.2s ease;
+  border: none; padding: 0;
+}
+.t-dot.active { background: var(--sienna); }
+
+@media (max-width: 768px) { .testimonials-section { padding: 64px 0; } }
