@@ -1,4 +1,4 @@
-# Harmonia Music Academy — React App
+# MyMusicSchool Music Academy — React App
 
 ## Quick Start
 
