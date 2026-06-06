@@ -1,59 +1,60 @@
+import { useLang } from '../context/LanguageContext'
 import './Contact.css'
 
 export default function Contact() {
+  const { t } = useLang()
+  const c = t('contact')
+  const hours = t('contact.hours')
+  const instruments = t('contact.instruments')
+
   return (
     <section className="contact-section" id="contact">
       <div className="wrap">
-        <div className="section-label reveal">Enroll</div>
+        <div className="section-label reveal">{c.label}</div>
         <h2 className="section-heading reveal d1">
-          Begin your<br /><strong>journey</strong>
+          {c.heading1}<br /><strong>{c.heading2}</strong>
         </h2>
         <div className="contact-grid">
           <form className="contact-form reveal d1" onSubmit={e => e.preventDefault()}>
             <div className="form-row">
               <div className="form-group">
-                <label className="form-label">First Name</label>
-                <input className="form-input" type="text" placeholder="Jane" />
+                <label className="form-label">{c.firstName}</label>
+                <input className="form-input" type="text" placeholder={c.firstNamePh} />
               </div>
               <div className="form-group">
-                <label className="form-label">Last Name</label>
-                <input className="form-input" type="text" placeholder="Smith" />
+                <label className="form-label">{c.lastName}</label>
+                <input className="form-input" type="text" placeholder={c.lastNamePh} />
               </div>
             </div>
             <div className="form-group">
-              <label className="form-label">Email Address</label>
-              <input className="form-input" type="email" placeholder="jane@example.com" />
+              <label className="form-label">{c.email}</label>
+              <input className="form-input" type="email" placeholder={c.emailPh} />
             </div>
             <div className="form-group">
-              <label className="form-label">Phone</label>
-              <input className="form-input" type="tel" placeholder="+1 (555) 000-0000" />
+              <label className="form-label">{c.phone}</label>
+              <input className="form-input" type="tel" placeholder={c.phonePh} />
             </div>
             <div className="form-group">
-              <label className="form-label">Instrument Interest</label>
+              <label className="form-label">{c.instrument}</label>
               <select className="form-select form-input">
-                <option value="" disabled defaultValue="">Select an instrument</option>
-                {['Piano','Guitar','Violin','Drums','Voice / Vocals','Music Theory','Music Production',"Children's Program (Ages 3–7)",'Not sure yet'].map(o => (
-                  <option key={o}>{o}</option>
-                ))}
+                <option value="" disabled defaultValue="">{c.instrumentSelect}</option>
+                {instruments.map(o => <option key={o}>{o}</option>)}
               </select>
             </div>
             <div className="form-group">
-              <label className="form-label">Message</label>
-              <textarea
-                className="form-textarea"
-                placeholder="Tell us about your goals, experience level, preferred schedule…"
-              />
+              <label className="form-label">{c.message}</label>
+              <textarea className="form-textarea" placeholder={c.messagePh} />
             </div>
             <button type="submit" className="btn-primary" style={{ width: '100%' }}>
-              Send Message
+              {c.send}
             </button>
           </form>
 
           <div className="contact-sidebar reveal d2">
             {[
-              { label: 'Phone',   value: '+1 (555) 742-8391' },
-              { label: 'Email',   value: 'hello@harmoniamusic.com' },
-              { label: 'Address', value: '284 Melody Lane, Suite 3\nSan Francisco, CA 94102' },
+              { label: c.phoneLabel,   value: '+1 (555) 742-8391' },
+              { label: c.emailLabel,   value: 'hello@harmoniamusic.com' },
+              { label: c.addressLabel, value: c.addressVal },
             ].map(({ label, value }) => (
               <div className="contact-info-block" key={label}>
                 <div className="contact-info-label">{label}</div>
@@ -61,11 +62,14 @@ export default function Contact() {
               </div>
             ))}
             <div className="contact-info-block">
-              <div className="contact-info-label">Hours</div>
+              <div className="contact-info-label">{c.hoursLabel}</div>
               <div className="hours-grid">
-                <div className="hours-day">Mon – Fri</div><div className="hours-time">9am – 9pm</div>
-                <div className="hours-day">Saturday</div><div className="hours-time">9am – 6pm</div>
-                <div className="hours-day">Sunday</div><div className="hours-time">10am – 5pm</div>
+                {hours.map(([day, time], i) => (
+                  <div key={i} style={{ display: 'contents' }}>
+                    <div className="hours-day">{day}</div>
+                    <div className="hours-time">{time}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

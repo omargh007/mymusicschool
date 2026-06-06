@@ -1,44 +1,101 @@
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ScrollReveal, StaggerContainer, StaggerItem } from '../animations'
+import { useLang } from '../context/LanguageContext'
 import './Programs.css'
 
-const programs = [
-  { num: '01', emoji: '🎹', name: 'Piano',            age: 'Age 5+',  dur: '45 min', level: 'All Levels',          desc: 'Classical technique, theory, and contemporary styles. The foundation of musical understanding for all ages.' },
-  { num: '02', emoji: '🎸', name: 'Guitar',           age: 'Age 7+',  dur: '45 min', level: 'All Levels',          desc: 'Acoustic, electric, and classical. From open chords to advanced fingerpicking and improvisation.' },
-  { num: '03', emoji: '🎻', name: 'Violin',           age: 'Age 5+',  dur: '45 min', level: 'Beginner — Advanced',  desc: 'Suzuki and traditional methods. Bow technique, posture, and classical repertoire from the first lesson.' },
-  { num: '04', emoji: '🥁', name: 'Drums',            age: 'Age 8+',  dur: '60 min', level: 'Beginner — Intermediate', desc: 'Rudiments, groove, rock, jazz, and afrobeats. Full kit lessons in soundproofed studios.' },
-  { num: '05', emoji: '🎤', name: 'Voice',            age: 'Age 10+', dur: '45 min', level: 'All Levels',          desc: 'Breath control, pitch, range, and performance confidence across classical and contemporary styles.' },
-  { num: '06', emoji: '📖', name: 'Music Theory',     age: 'Age 8+',  dur: '60 min', level: 'Beginner — Advanced',  desc: 'Notation, harmony, scales, and composition. The language behind every instrument.' },
-  { num: '07', emoji: '🎛️', name: 'Music Production', age: 'Age 14+', dur: '60 min', level: 'Teen — Adult',         desc: 'DAW fundamentals, beat-making, mixing and mastering. From idea to finished track.' },
-  { num: '08', emoji: '🌟', name: "Children's Music",  age: 'Age 3–7', dur: '30 min', level: 'Early Start',         desc: 'Rhythm, pitch, and ear-training through song, play, and movement. The perfect musical first step.' },
-]
+const levelColors = {
+  'مبتدئ': '#4a7c59', 'Beginner': '#4a7c59',
+  'متوسط': '#b5451b', 'Intermediate': '#b5451b',
+  'Inter. — Advanced': '#7a5c2e', 'متوسط — متقدم': '#7a5c2e',
+  'Beginner — Inter.': '#6b7a4a', 'مبتدئ — متوسط': '#6b7a4a',
+  'متقدم': '#1a3a5c', 'Advanced': '#1a3a5c',
+}
 
 export default function Programs() {
+  const { t, isAr } = useLang()
+  const courses = t('courses')
+  const cs = t('coursesSection')
+  const [active, setActive] = useState(null)
+
   return (
-    <section className="programs-section" id="programs">
-      <div className="wrap" style={{ position: 'relative' }}>
-        <span className="watermark-num">01</span>
-        <div className="section-label reveal">Programs</div>
-        <h2 className="section-heading reveal d1">
-          Find your<br /><strong>instrument</strong>
-        </h2>
-      </div>
-      <div className="programs-scroll-outer">
-        <div className="programs-track">
-          {programs.map((p, i) => (
-            <div className={`prog-card reveal d${Math.min(i, 5)}`} key={p.num}>
-              <span className="prog-num">{p.num}</span>
-              <span className="prog-emoji">{p.emoji}</span>
-              <div className="prog-name">{p.name}</div>
-              <div className="prog-meta-row">
-                <span>{p.age}</span>
-                <span>{p.dur}</span>
-              </div>
-              <div className="prog-desc">{p.desc}</div>
-              <span className="prog-level">{p.level}</span>
-            </div>
-          ))}
+    <section className="courses-section" id="programs">
+      <div className="courses-section-inner">
+
+        {/* ── header ── */}
+        <div className="courses-header wrap">
+          <ScrollReveal direction="up">
+            <div className="section-label">{cs.label}</div>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.1}>
+            <h2 className="section-heading">
+              {cs.heading1}<br /><strong>{cs.heading2}</strong>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.2}>
+            <p className="courses-sub">{cs.sub}</p>
+          </ScrollReveal>
         </div>
+
+        {/* ── grid ── */}
+        <StaggerContainer className="courses-grid wrap" delay={0.1}>
+          {courses.map((c, i) => (
+            <StaggerItem key={i}>
+              <motion.div
+                className={`course-card${active === i ? ' active' : ''}`}
+                onClick={() => setActive(active === i ? null : i)}
+                whileHover={{ y: -4, boxShadow: '0 12px 40px rgba(26,18,8,0.12)' }}
+                transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+                layout
+              >
+                <div className="course-card-top">
+                  <span className="course-num">0{i + 1}</span>
+                  <span
+                    className="course-level-badge"
+                    style={{ color: levelColors[c.level] || 'var(--sienna)', borderColor: levelColors[c.level] || 'var(--sienna)' }}
+                  >
+                    {c.level}
+                  </span>
+                </div>
+
+                <div className="course-card-body">
+                  <h3 className="course-title">{c.title}</h3>
+                  <p className="course-desc">{c.desc}</p>
+                </div>
+
+                <AnimatePresence>
+                  {active === i && (
+                    <motion.div
+                      className="course-card-expand"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    >
+                      <a href="#contact" className="course-enroll-btn">
+                        {cs.enroll} →
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <motion.div
+                  className="course-card-arrow"
+                  animate={{ rotate: active === i ? 45 : 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  +
+                </motion.div>
+              </motion.div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+
+        {/* bottom label */}
+        <ScrollReveal direction="fade" delay={0.2}>
+          <p className="courses-bottom-note">{cs.allLevels}</p>
+        </ScrollReveal>
       </div>
-      <div className="programs-hint reveal">← Scroll to see all programs →</div>
     </section>
   )
 }

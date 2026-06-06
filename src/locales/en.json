@@ -1,0 +1,192 @@
+{
+  "nav": {
+    "programs": "Courses",
+    "faculty": "Faculty",
+    "events": "Events",
+    "contact": "Contact",
+    "bookTrial": "Book Free Trial"
+  },
+  "hero": {
+    "eyebrow": "Est. 2011 — San Francisco",
+    "headline1": "Unlock Your",
+    "headline2": "Musical Potential",
+    "scroll": "Scroll to explore",
+    "badge": "Our Main Service",
+    "title": "Music Theory\nCourses",
+    "sub": "8 progressive courses that take you from first note to complete musical fluency — for every age and level.",
+    "cta": "Book a Free Trial Lesson",
+    "explore": "Explore Courses"
+  },
+  "courses": [
+    { "title": "Music Fundamentals",       "desc": "Notes, clefs, staff, basic notation & first reading", "level": "Beginner" },
+    { "title": "Rhythm & Meter",           "desc": "Time signatures, beats, subdivision & rhythmic reading", "level": "Beginner" },
+    { "title": "Scales & Modes",           "desc": "Major, minor & all 7 modal scales explored in depth", "level": "Beginner — Inter." },
+    { "title": "Intervals & Ear Training", "desc": "Recognize, sing & notate any musical interval with precision", "level": "Intermediate" },
+    { "title": "Chords & Harmony",         "desc": "Triads, 7ths & advanced harmonic progressions", "level": "Intermediate" },
+    { "title": "Voice Leading",            "desc": "Connect chords with smooth, resonant inner voices", "level": "Inter. — Advanced" },
+    { "title": "Counterpoint",             "desc": "Two-voice writing & Bach-style species counterpoint", "level": "Advanced" },
+    { "title": "Composition & Form",       "desc": "Song structure, musical analysis & original composition", "level": "Advanced" }
+  ],
+  "coursesSection": {
+    "label": "What You'll Learn",
+    "heading1": "8 Courses",
+    "heading2": "Built for Your Journey",
+    "sub": "From the very first note to full composition — a clear, progressive path with specialist instructors.",
+    "enroll": "Enroll in This Course",
+    "allLevels": "All levels welcome"
+  },
+  "why": {
+    "label": "Why Us",
+    "heading1": "Music education that",
+    "heading2": "transforms lives",
+    "features": [
+      { "num": "01", "icon": "🎓", "title": "Expert Faculty",            "desc": "Every instructor holds a conservatory degree and performs professionally. Real musicianship, real mentorship." },
+      { "num": "02", "icon": "🎹", "title": "All Instruments",           "desc": "Twelve instruments across classical, contemporary, and electronic genres. One curriculum, infinite paths." },
+      { "num": "03", "icon": "📅", "title": "Flexible Scheduling",       "desc": "Mornings, evenings, weekends. In-studio or online. We fit around your life, not the other way around." },
+      { "num": "04", "icon": "🎭", "title": "Performance Opportunities", "desc": "Recitals, workshops, and masterclasses year-round. Students become confident performers, not just players." }
+    ]
+  },
+  "instructors": {
+    "label": "Faculty",
+    "heading1": "Learn from working",
+    "heading2": "musicians",
+    "viewProfile": "View Profile →",
+    "facultyLabel": "Faculty",
+    "list": [
+      {
+        "name": "Maya Chen", "title": "Piano & Composition",
+        "bio": "A Juilliard graduate and concert pianist with 14 years of teaching experience. Maya specializes in bridging classical technique with modern musical sensibility.",
+        "tags": ["Classical", "Jazz", "Composition", "ABRSM Examiner"]
+      },
+      {
+        "name": "Rafael Torres", "title": "Guitar & Music Production",
+        "bio": "Berklee alumnus, session guitarist, and producer with credits on three Billboard-charting records. Rafael brings real-world industry knowledge to every lesson.",
+        "tags": ["Acoustic", "Electric", "Ableton", "Flamenco"]
+      },
+      {
+        "name": "Aisha Okafor", "title": "Voice & Performance",
+        "bio": "Royal College of Music graduate and active West End performer. Aisha's vocal method blends classical bel canto with contemporary technique.",
+        "tags": ["Classical", "Musical Theatre", "R&B / Soul", "Ear Training"]
+      }
+    ]
+  },
+  "testimonials": {
+    "label": "Student Stories",
+    "list": [
+      {
+        "quote": "I joined with zero musical background at 34. Within six months I was playing pieces I had always dreamed of. Maya's patience and method are nothing short of extraordinary.",
+        "name": "Sarah Kimura", "role": "Adult Piano Student, 2 years", "initials": "SK", "color": "#b5451b"
+      },
+      {
+        "quote": "My daughter has been with the academy for three years. She performed her first recital at age 7 and just won her regional youth violin competition.",
+        "name": "David Moreau", "role": "Parent of Violin Student", "initials": "DM", "color": "#5b6ea0"
+      },
+      {
+        "quote": "Rafael didn't just teach me guitar — he showed me how music production works end-to-end. I released my first EP at 19 thanks to what I learned here.",
+        "name": "Jordan Achebe", "role": "Guitar & Production Student", "initials": "JA", "color": "#3d8a6e"
+      }
+    ]
+  },
+  "gallery": {
+    "label": "Gallery",
+    "heading1": "Life at",
+    "heading2": "our Academy",
+    "images": [
+      "Piano Masterclass",
+      "Guitar Workshop",
+      "Vocal Performance",
+      "Violin Ensemble",
+      "Drum Clinic",
+      "Recital Night"
+    ]
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading1": "Common",
+    "heading2": "questions",
+    "intro": "Can't find what you're looking for? Reach out directly and we'll be happy to help.",
+    "contact": "Contact us →",
+    "list": [
+      {
+        "q": "What age can my child start music lessons?",
+        "a": "We accept children from age 3 for our early childhood programs. Individual instrument lessons typically begin at age 5–7 depending on the instrument. Our faculty recommends the best starting point during a free assessment."
+      },
+      {
+        "q": "Which instruments do you offer?",
+        "a": "Piano, Guitar (acoustic, electric, classical), Violin, Viola, Drums, Voice, Trumpet, Flute, Saxophone, Music Theory, and Music Production. New instruments are added based on demand."
+      },
+      {
+        "q": "What happens during the free trial lesson?",
+        "a": "Your first lesson is completely free and commitment-free. The instructor assesses your current level, discusses your goals, introduces foundational concepts, and recommends a learning path."
+      },
+      {
+        "q": "What is your cancellation and rescheduling policy?",
+        "a": "Lessons cancelled at least 24 hours in advance can be rescheduled at no charge. Late cancellations within 24 hours are charged at 50% of the lesson rate. Members can pause for up to one month per year without penalty."
+      },
+      {
+        "q": "How much should students practice at home?",
+        "a": "Beginners: 15–20 minutes daily. Intermediate: 30–45 minutes. Advanced: 60–90 minutes. Consistency matters far more than duration; short daily sessions outperform weekly marathons every time."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Enroll",
+    "heading1": "Begin your",
+    "heading2": "journey",
+    "firstName": "First Name",
+    "firstNamePh": "Jane",
+    "lastName": "Last Name",
+    "lastNamePh": "Smith",
+    "email": "Email Address",
+    "emailPh": "jane@example.com",
+    "phone": "Phone",
+    "phonePh": "+1 (555) 000-0000",
+    "instrument": "Instrument Interest",
+    "instrumentSelect": "Select an instrument",
+    "instruments": ["Piano","Guitar","Violin","Drums","Voice / Vocals","Music Theory","Music Production","Children's Program (Ages 3–7)","Not sure yet"],
+    "message": "Message",
+    "messagePh": "Tell us about your goals, experience level, preferred schedule…",
+    "send": "Send Message",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "addressVal": "284 Melody Lane, Suite 3\nSan Francisco, CA 94102",
+    "hoursLabel": "Hours",
+    "hours": [
+      ["Mon – Fri", "9am – 9pm"],
+      ["Saturday",  "9am – 6pm"],
+      ["Sunday",    "10am – 5pm"]
+    ]
+  },
+  "footer": {
+    "sub": "Inspiring musicians of all ages since 2011. World-class instruction for every instrument, every level, every dream.",
+    "academyTitle": "Academy",
+    "academyLinks": [["#why","Why Us"],["#instructors","Our Faculty"],["#gallery","Gallery"],["#contact","Contact"]],
+    "programsTitle": "Courses",
+    "programsLinks": ["Piano","Guitar","Violin","Voice","Music Production","Children's Music"],
+    "infoTitle": "Information",
+    "infoLinks": [["#faq","FAQ"],["#contact","Enroll Now"],["#","Student Portal"],["#","Gift Cards"]],
+    "copy": "© 2026 MyMusicSchool. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies"
+  },
+  "freeSession": {
+    "label": "Special Offer",
+    "heading1": "Your First Session",
+    "heading2": "Completely Free",
+    "sub": "No prior experience needed. No commitment. Just genuine curiosity and a willingness to learn.",
+    "promise": "Our Promise to You",
+    "points": [
+      "Personal assessment of your current level",
+      "A custom learning plan tailored to your goals",
+      "A full session with a specialist instructor",
+      "No fees, no obligation, no strings attached"
+    ],
+    "cta": "Book Your Free Session Now",
+    "note": "Over 500 students started exactly this way",
+    "priceLabel": "Price",
+    "priceCrossed": "$150",
+    "priceFree": "Free"
+  }
+}

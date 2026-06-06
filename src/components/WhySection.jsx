@@ -1,23 +1,20 @@
+import { useLang } from '../context/LanguageContext'
 import './WhySection.css'
 
-const features = [
-  { num: '01', icon: '🎓', title: 'Expert Faculty', desc: 'Every instructor holds a conservatory degree and performs professionally. Real musicianship, real mentorship.' },
-  { num: '02', icon: '🎹', title: 'All Instruments', desc: 'Twelve instruments across classical, contemporary, and electronic genres. One curriculum, infinite paths.' },
-  { num: '03', icon: '📅', title: 'Flexible Scheduling', desc: 'Mornings, evenings, weekends. In-studio or online. We fit around your life, not the other way around.' },
-  { num: '04', icon: '🎭', title: 'Performance Opportunities', desc: 'Recitals, workshops, and masterclasses year-round. Students become confident performers, not just players.' },
-]
-
 export default function WhySection() {
+  const { t } = useLang()
+  const why = t('why')
+
   return (
     <>
       <section className="why-section" id="why">
         <div className="wrap">
-          <div className="section-label reveal">Why Harmonia</div>
+          <div className="section-label reveal">{why.label}</div>
           <h2 className="section-heading reveal d1">
-            Music education that<br /><strong>transforms lives</strong>
+            {why.heading1}<br /><strong>{why.heading2}</strong>
           </h2>
           <div className="why-grid">
-            {features.map((f, i) => (
+            {why.features.map((f, i) => (
               <div className={`why-item reveal d${i}`} key={f.num}>
                 <div className="why-num">{f.num}</div>
                 <div className="why-icon">{f.icon}</div>

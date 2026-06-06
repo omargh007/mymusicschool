@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { LanguageProvider } from './context/LanguageContext'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import WhySection from './components/WhySection'
@@ -6,14 +7,12 @@ import Programs from './components/Programs'
 import Instructors from './components/Instructors'
 import Testimonials from './components/Testimonials'
 import Gallery from './components/Gallery'
-import Events from './components/Events'
-import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import CtaDark from './components/CtaDark'
 import Footer from './components/Footer'
 
-export default function App() {
+function AppInner() {
   useEffect(() => {
     const obs = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } }),
@@ -24,6 +23,7 @@ export default function App() {
     }, 100)
     return () => { clearTimeout(timer); obs.disconnect() }
   }, [])
+
   return (
     <>
       <Nav />
@@ -34,13 +34,19 @@ export default function App() {
         <Instructors />
         <Testimonials />
         <Gallery />
-        <Events />
-        <Pricing />
         <FAQ />
         <Contact />
         <CtaDark />
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppInner />
+    </LanguageProvider>
   )
 }

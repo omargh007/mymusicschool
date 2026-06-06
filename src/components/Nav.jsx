@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useLang } from '../context/LanguageContext'
 import './Nav.css'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t, toggle, locale, isAr } = useLang()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -11,14 +14,23 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const navLinks = [
+    { href: '#programs',    label: t('nav.programs') },
+    { href: '#instructors', label: t('nav.faculty') },
+    { href: '#events',      label: t('nav.events') },
+  ]
+  const navRight = [
+    { href: '#contact', label: t('nav.contact') },
+  ]
+
   return (
     <>
       <nav className={`nav${scrolled ? ' opaque' : ''}`}>
         <div className="nav-inner">
           <ul className="nav-left">
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#instructors">Faculty</a></li>
-            <li><a href="#events">Events</a></li>
+            {navLinks.map(l => (
+              <li key={l.href}><a href={l.href}>{l.label}</a></li>
+            ))}
           </ul>
 
           <a href="#home" className="nav-logo">
@@ -27,9 +39,34 @@ export default function Nav() {
           </a>
 
           <ul className="nav-right">
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#contact" className="nav-cta-pill">Book Free Trial</a></li>
+            {navRight.map(l => (
+              <li key={l.href}><a href={l.href}>{l.label}</a></li>
+            ))}
+            {/* Language toggle */}
+            <li>
+              <motion.button
+                className="lang-toggle"
+                onClick={toggle}
+                whileHover={{ scale: 1.06 }}
+                whileTap={{ scale: 0.94 }}
+                title={isAr ? 'Switch to English' : 'التبديل إلى العربية'}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={locale}
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {isAr ? 'EN' : 'ع'}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
+            </li>
+            <li>
+              <a href="#contact" className="nav-cta-pill">{t('nav.bookTrial')}</a>
+            </li>
           </ul>
 
           <button
@@ -44,19 +81,30 @@ export default function Nav() {
         </div>
       </nav>
 
-      <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
-        {['#programs','#instructors','#events','#pricing','#contact'].map((href, i) => (
-          <a key={i} href={href} onClick={() => setMenuOpen(false)}>
-            {['Programs','Faculty','Events','Pricing','Contact'][i]}
-          </a>
-        ))}
-        <div className="mobile-menu-actions">
-          <a href="#contact" className="btn-primary" onClick={() => setMenuOpen(false)}
-            style={{ textAlign: 'center' }}>
-            Book Free Trial Lesson
-          </a>
-        </div>
-      </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="mobile-menu open"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+          >
+            {[...navLinks, ...navRight].map(l => (
+              <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
+            ))}
+            <div className="mobile-menu-actions">
+              <button className="lang-toggle lang-toggle-mobile" onClick={toggle}>
+                {isAr ? 'English' : 'العربية'}
+              </button>
+              <a href="#contact" className="btn-primary" onClick={() => setMenuOpen(false)}
+                style={{ textAlign: 'center' }}>
+                {t('nav.bookTrial')}
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

@@ -17,10 +17,12 @@
   --dark:       #1a1208;
   --ff-display: 'Cormorant Garamond', Georgia, serif;
   --ff-body:    'DM Sans', system-ui, sans-serif;
+  --ff-ar:      'Cairo', 'Segoe UI', system-ui, sans-serif;
   --nav-h:      64px;
 }
 
 html { scroll-behavior: smooth; font-size: 16px; }
+html[lang="ar"] body { font-family: var(--ff-ar); }
 
 body {
   background: var(--ivory);
