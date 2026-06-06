@@ -1,3 +1,13 @@
+/* scroll progress bar */
+.nav-progress {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--sienna);
+  transform-origin: left;
+  z-index: 101;
+}
+
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--nav-h);

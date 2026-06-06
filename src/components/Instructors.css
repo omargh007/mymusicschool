@@ -15,20 +15,19 @@
 .instructor-img-col { position: relative; overflow: hidden; }
 .instructor-img-wrap {
   position: relative; width: 100%; height: 100%; min-height: 440px;
+  overflow: hidden;
 }
 .instructor-img-wrap img {
-  width: 100%; height: 100%;
+  width: 100%; height: 115%;
   object-fit: cover; object-position: top center; display: block;
+  will-change: transform;
 }
-.instructor-img-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 24px -24px -24px 24px;
-  border: 2px solid var(--sienna);
-  opacity: 0.35; pointer-events: none; z-index: 1;
-}
-.instructor-row.flip .instructor-img-wrap::before {
-  inset: 24px 24px -24px -24px;
+/* animated reveal curtain */
+.instructor-img-frame {
+  position: absolute; inset: 0;
+  background: var(--ivory);
+  z-index: 2;
+  will-change: transform;
 }
 .instructor-text-col {
   padding: 64px 72px;

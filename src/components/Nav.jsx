@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { useLang } from '../context/LanguageContext'
 import './Nav.css'
 
@@ -7,6 +7,9 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { t, toggle, locale, isAr } = useLang()
+
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -17,15 +20,18 @@ export default function Nav() {
   const navLinks = [
     { href: '#programs',    label: t('nav.programs') },
     { href: '#instructors', label: t('nav.faculty') },
-    { href: '#events',      label: t('nav.events') },
-  ]
-  const navRight = [
-    { href: '#contact', label: t('nav.contact') },
+    { href: '#why',         label: t('why.label') },
   ]
 
   return (
     <>
       <nav className={`nav${scrolled ? ' opaque' : ''}`}>
+        {/* scroll progress bar */}
+        <motion.div
+          className="nav-progress"
+          style={{ scaleX, transformOrigin: isAr ? 'right' : 'left' }}
+        />
+
         <div className="nav-inner">
           <ul className="nav-left">
             {navLinks.map(l => (
@@ -39,10 +45,7 @@ export default function Nav() {
           </a>
 
           <ul className="nav-right">
-            {navRight.map(l => (
-              <li key={l.href}><a href={l.href}>{l.label}</a></li>
-            ))}
-            {/* Language toggle */}
+            <li><a href="#contact">{t('nav.contact')}</a></li>
             <li>
               <motion.button
                 className="lang-toggle"
@@ -64,9 +67,7 @@ export default function Nav() {
                 </AnimatePresence>
               </motion.button>
             </li>
-            <li>
-              <a href="#contact" className="nav-cta-pill">{t('nav.bookTrial')}</a>
-            </li>
+            <li><a href="#contact" className="nav-cta-pill">{t('nav.bookTrial')}</a></li>
           </ul>
 
           <button
@@ -90,7 +91,7 @@ export default function Nav() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
           >
-            {[...navLinks, ...navRight].map(l => (
+            {[...navLinks, { href: '#contact', label: t('nav.contact') }].map(l => (
               <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
             ))}
             <div className="mobile-menu-actions">
