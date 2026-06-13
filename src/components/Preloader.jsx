@@ -32,14 +32,10 @@ export default function Preloader({ onDone }) {
     if (isMobile) {
       gsap.set(panelRefs.current, { opacity: 0 })
       gsap.set(panelRefs.current[0], { opacity: 1 })
-      gsap.set(imgRefs.current, { scale: 1.15 })
+      gsap.set(imgRefs.current[0], { scale: 1.15 })
 
       introTl
-        .to(imgRefs.current, { scale: 1, duration: 2.6, ease: 'none' })
-        .to(panelRefs.current[0], { opacity: 0, duration: 0.6 }, 0.8)
-        .to(panelRefs.current[1], { opacity: 1, duration: 0.6 }, 0.8)
-        .to(panelRefs.current[1], { opacity: 0, duration: 0.6 }, 1.6)
-        .to(panelRefs.current[2], { opacity: 1, duration: 0.6 }, 1.6)
+        .to(imgRefs.current[0], { scale: 1, duration: 2.6, ease: 'none' })
         .fromTo(markRef.current, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.7 }, 0.3)
         .fromTo(hintRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 }, '+=0.3')
     } else {
@@ -69,10 +65,10 @@ export default function Preloader({ onDone }) {
       exitTl.to([markRef.current, hintRef.current], { opacity: 0, y: -14, duration: 0.4 })
 
       if (isMobile) {
-        exitTl.set(panelRefs.current, { opacity: 1 })
+        exitTl.to(panelRefs.current[0], { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '-=0.1')
+      } else {
+        exitTl.to(panelRefs.current, { yPercent: -100, duration: 1.1, ease: 'expo.inOut', stagger: 0.12 }, '-=0.1')
       }
-
-      exitTl.to(panelRefs.current, { yPercent: -100, duration: 1.1, ease: 'expo.inOut', stagger: 0.12 }, '-=0.1')
     }
 
     const onWheel = (e) => { e.preventDefault(); exit() }
