@@ -1,8 +1,6 @@
 .hero {
   position: relative;
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -26,27 +24,30 @@
 .hero-image-panel {
   position: relative;
   z-index: 2;
+  height: 100%;
   overflow: hidden;
 }
 .hero-image-content {
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
   justify-content: flex-end;
-  padding: 64px 56px;
+  padding: 0 64px 80px;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 .hero-image-eyebrow {
   font-family: var(--ff-body);
   font-size: 11px; font-weight: 500;
   letter-spacing: 3px; text-transform: uppercase;
-  color: rgba(232,213,196,0.7); margin-bottom: 20px;
+  color: rgba(232,213,196,0.7); margin-bottom: 24px;
 }
 .hero-h1 {
   font-family: var(--ff-display);
-  font-size: clamp(44px, 5.5vw, 74px);
+  font-size: clamp(56px, 9vw, 128px);
   font-weight: 300;
-  line-height: 1.08; color: var(--ivory);
-  letter-spacing: -0.5px; margin-bottom: 28px;
-  max-width: 560px;
+  line-height: 1.04; color: var(--ivory);
+  letter-spacing: -1px; margin-bottom: 32px;
+  max-width: 760px;
   will-change: transform;
 }
 .hero-h1 strong {
@@ -73,110 +74,10 @@
 .hero-float-note   { top: 15%; left: 12%; font-size: 100px; }
 .hero-float-note-2 { top: 40%; right: 10%; font-size: 60px; }
 
-/* ── CTA panel ── */
-.hero-cta-panel {
-  background: rgba(250, 248, 244, 0.86);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-inline-start: 1px solid rgba(255, 255, 255, 0.35);
-  display: flex; flex-direction: column;
-  justify-content: center;
-  padding: 72px 56px 60px;
-  position: relative; z-index: 2; overflow: hidden;
-}
-.hero-watermark {
-  position: absolute; bottom: -60px; right: -20px;
-  font-family: var(--ff-display);
-  font-size: clamp(180px, 22vw, 280px);
-  font-weight: 700; font-style: italic;
-  color: var(--ink); opacity: 0.025;
-  line-height: 1; pointer-events: none; user-select: none;
-  will-change: transform;
-}
-.hero-cta-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--ff-body);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 2px; text-transform: uppercase;
-  color: var(--sienna); margin-bottom: 16px;
-}
-.hero-cta-badge::before {
-  content: '';
-  width: 28px; height: 1px;
-  background: var(--sienna);
-}
-.hero-cta-badge.ar::before { display: none; }
-.hero-cta-badge.ar::after {
-  content: '';
-  width: 28px; height: 1px;
-  background: var(--sienna);
-}
-.hero-cta-title {
-  font-family: var(--ff-display);
-  font-size: clamp(30px, 3.2vw, 46px);
-  font-weight: 600; color: var(--ink);
-  letter-spacing: -0.3px;
-  margin-bottom: 14px;
-}
-.hero-cta-sub {
-  font-size: 14px; color: var(--ink-2);
-  line-height: 1.7; margin-bottom: 22px; max-width: 380px;
-}
-
-/* ── 8 courses stagger grid ── */
-.hero-courses-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.hero-course-card {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--ivory-2);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 10px 12px;
-  cursor: default;
-  will-change: transform;
-  position: relative;
-}
-.hero-course-num {
-  font-family: var(--ff-display);
-  font-size: 11px; font-weight: 700;
-  color: var(--sienna); letter-spacing: 0.5px;
-  line-height: 1; flex-shrink: 0; min-width: 18px;
-}
-.hero-course-body {
-  display: flex; flex-direction: column; gap: 2px;
-  flex: 1;
-}
-.hero-course-title {
-  font-family: var(--ff-body);
-  font-size: 12px; font-weight: 500;
-  color: var(--ink); line-height: 1.3;
-}
-.hero-course-desc {
-  font-size: 11px; color: var(--ink-3); line-height: 1.4;
-}
-.hero-course-arrow {
-  font-size: 18px; color: var(--sienna);
-  font-weight: 300; flex-shrink: 0;
-  line-height: 1;
-}
-
-/* ── actions ── */
-.hero-actions {
-  display: flex; flex-direction: column; gap: 12px;
-}
-
 /* ── responsive ── */
-@media (max-width: 1100px) {
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-image-panel { min-height: 65vh; }
-  .hero-cta-panel { padding: 56px 48px; }
-}
 @media (max-width: 768px) {
-  .hero-cta-panel { padding: 44px 24px; }
-  .hero-courses-grid { grid-template-columns: 1fr; }
-  .hero-image-content { padding: 40px 28px; }
+  .hero-image-content { padding: 0 28px 64px; }
+  .hero-h1 { font-size: clamp(40px, 13vw, 64px); margin-bottom: 24px; }
+  .hero-image-eyebrow { margin-bottom: 16px; }
+  .hero-float-note, .hero-float-note-2 { display: none; }
 }

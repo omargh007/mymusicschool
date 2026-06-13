@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
-import { FadeUp, FloatBob, StaggerContainer, StaggerItem } from '../animations'
+import { FadeUp, FloatBob } from '../animations'
 import { useLang } from '../context/LanguageContext'
 import './Hero.css'
 
@@ -8,7 +8,6 @@ const ease = [0.25, 0.46, 0.45, 0.94]
 
 export default function Hero() {
   const { t, isAr } = useLang()
-  const courses = t('courses')
 
   /* ── parallax on scroll ── */
   const sectionRef = useRef(null)
@@ -84,76 +83,6 @@ export default function Hero() {
             </div>
           </FadeUp>
         </div>
-      </div>
-
-      {/* ── RIGHT: services panel ── */}
-      <div className="hero-cta-panel">
-        <FloatBob className="hero-watermark" duration={11}>♩</FloatBob>
-
-        <FadeUp delay={0.15}>
-          <div className={`hero-cta-badge ${isAr ? 'ar' : ''}`}>{t('hero.badge')}</div>
-        </FadeUp>
-
-        <FadeUp delay={0.3}>
-          <h2 className="hero-cta-title" style={{ fontFamily: isAr ? 'var(--ff-ar)' : 'var(--ff-display)', lineHeight: isAr ? 1.45 : 1.15 }}>
-            {t('hero.title').split('\n').map((line, i) => (
-              <span key={i}>{line}{i === 0 && <br />}</span>
-            ))}
-          </h2>
-        </FadeUp>
-
-        <FadeUp delay={0.42}>
-          <p className="hero-cta-sub">{t('hero.sub')}</p>
-        </FadeUp>
-
-        {/* ── 8 courses staggered grid ── */}
-        <StaggerContainer className="hero-courses-grid" delay={0.55}>
-          {courses.map((c, i) => (
-            <StaggerItem key={i}>
-              <motion.div
-                className="hero-course-card"
-                whileHover={{ scale: 1.03, borderColor: 'var(--sienna)', boxShadow: '0 4px 20px rgba(181,69,27,0.15)' }}
-                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-              >
-                <span className="hero-course-num">0{i + 1}</span>
-                <div className="hero-course-body">
-                  <div className="hero-course-title">{c.title}</div>
-                  <div className="hero-course-desc">{c.desc}</div>
-                </div>
-                <motion.div
-                  className="hero-course-arrow"
-                  initial={{ opacity: 0, x: -4 }}
-                  whileHover={{ opacity: 1, x: 0 }}
-                >›</motion.div>
-              </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        <FadeUp delay={1.1}>
-          <div className="hero-actions">
-            <motion.a
-              href="#contact"
-              className="btn-primary"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {t('hero.cta')}
-            </motion.a>
-            <motion.a
-              href="#programs"
-              className="btn-secondary"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <circle cx="7" cy="7" r="5.5" stroke="currentColor" strokeWidth="1.2"/>
-                <path d="M5.5 5.2l3 1.8-3 1.8V5.2z" fill="currentColor"/>
-              </svg>
-              {t('hero.explore')}
-            </motion.a>
-          </div>
-        </FadeUp>
       </div>
     </section>
   )
