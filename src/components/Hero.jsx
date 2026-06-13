@@ -42,16 +42,18 @@ export default function Hero() {
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      {/* ── LEFT: image panel ── */}
-      <div className="hero-image-panel">
-        <motion.img
-          src="/music-hero.jpg"
-          alt="Music Academy"
-          loading="eager"
-          style={{ y: imgY, x: depth2X }}
-        />
-        <motion.div className="hero-image-overlay" style={{ opacity: overlayOp }} />
+      {/* ── full-bleed background image ── */}
+      <motion.img
+        src="/music-hero.jpg"
+        alt="Music Academy"
+        className="hero-bg-image"
+        loading="eager"
+        style={{ y: imgY, x: depth2X }}
+      />
+      <motion.div className="hero-bg-overlay" style={{ opacity: overlayOp }} />
 
+      {/* ── LEFT: headline panel ── */}
+      <div className="hero-image-panel">
         {/* floating musical note */}
         <FloatBob className="hero-float-note" duration={7.5}>♩</FloatBob>
         <FloatBob className="hero-float-note-2" duration={9.2}>♪</FloatBob>
