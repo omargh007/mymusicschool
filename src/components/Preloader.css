@@ -61,7 +61,38 @@
   text-transform: uppercase;
 }
 
+.preloader-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 42px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  color: var(--ivory);
+  font-family: var(--ff-body);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+}
+.preloader-hint-chevron {
+  font-size: 16px;
+  color: var(--sienna-l);
+  animation: preloader-bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes preloader-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
 @media (max-width: 768px) {
   .preloader-note { font-size: 34px; }
   .preloader-name { font-size: 15px; letter-spacing: 3px; }
+  .preloader-hint { bottom: 28px; font-size: 11px; letter-spacing: 2px; }
 }
