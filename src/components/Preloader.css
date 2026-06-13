@@ -95,4 +95,11 @@
   .preloader-note { font-size: 34px; }
   .preloader-name { font-size: 15px; letter-spacing: 3px; }
   .preloader-hint { bottom: 28px; font-size: 11px; letter-spacing: 2px; }
+
+  .preloader-panel {
+    position: absolute;
+    inset: 0;
+    flex: none;
+    width: 100%;
+  }
 }
