@@ -1,20 +1,21 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ivory:      #faf8f4;
-  --ivory-2:    #f5f1eb;
-  --ivory-3:    #ede7dc;
+  /* ── Silver luxury palette ─────────────────────────── */
+  --ivory:      #f0f0ee;   /* platinum silver — main background  */
+  --ivory-2:    #e6e6e4;   /* silver secondary                   */
+  --ivory-3:    #dadad8;   /* silver mid-tone                    */
   --white:      #ffffff;
-  --sienna:     #b5451b;
-  --sienna-l:   #e8d5c4;
-  --sienna-ll:  #f7ede6;
-  --ink:        #1a1208;
-  --ink-2:      #6b5e4e;
-  --ink-3:      #a89880;
-  --ink-4:      #c4b8a8;
-  --border:     #e8e0d4;
-  --border-d:   #d4c8b8;
-  --dark:       #1a1208;
+  --sienna:     #b8922a;   /* burnished gold — primary accent    */
+  --sienna-l:   #dfca88;   /* light gold                         */
+  --sienna-ll:  #f5edcc;   /* gold wash                          */
+  --ink:        #0c0c0a;   /* carbon black                       */
+  --ink-2:      #383836;   /* dark charcoal                      */
+  --ink-3:      #686866;   /* mid grey                           */
+  --ink-4:      #989896;   /* steel grey                         */
+  --border:     #dcdcda;   /* cool silver border                 */
+  --border-d:   #c6c6c4;   /* darker border                      */
+  --dark:       #0c0c0a;
   --ff-display: 'Cormorant Garamond', Georgia, serif;
   --ff-body:    'DM Sans', system-ui, sans-serif;
   --ff-ar:      'Cairo', 'Segoe UI', system-ui, sans-serif;
@@ -96,24 +97,24 @@ body {
   animation: countIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* ── subtle shimmer on featured pricing card ──────── */
+/* ── shimmer keyframe (used by pricing card) ──────── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
 }
 
-/* ── page entrance: hero content ─────────────────── */
+/* ── page / hero entrance ─────────────────────────── */
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: none; }
 }
-.hero-animate-1 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+.hero-animate-1 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.10s both; }
 .hero-animate-2 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.25s both; }
-.hero-animate-3 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.4s both; }
+.hero-animate-3 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.40s both; }
 .hero-animate-4 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.55s both; }
-.hero-animate-5 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.7s both; }
+.hero-animate-5 { animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.70s both; }
 
-/* buttons */
+/* ── buttons ──────────────────────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -133,7 +134,7 @@ body {
   transition: background 0.2s ease;
   white-space: nowrap;
 }
-.btn-primary:hover { background: #9a3a15; }
+.btn-primary:hover { background: #9a7a20; }
 
 .btn-secondary {
   display: inline-flex;
@@ -175,7 +176,7 @@ body {
 }
 .btn-outline-sm:hover { border-color: var(--sienna); color: var(--sienna); }
 
-/* ornament divider */
+/* ── ornament divider ─────────────────────────────── */
 .ornament {
   display: flex;
   align-items: center;
@@ -196,7 +197,7 @@ body {
   opacity: 0.5;
 }
 
-/* watermark section numbers */
+/* ── watermark section numbers ────────────────────── */
 .watermark-num {
   position: absolute;
   font-family: var(--ff-display);
