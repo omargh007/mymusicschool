@@ -1,0 +1,122 @@
+/* ══ GuitarHero ══════════════════════════════════════════════════════════════
+   Scroll-driven frame animation.
+   The outer section is tall (300 vh) so scrolling travels through all frames.
+   The inner .guitar-sticky is position:sticky so it stays pinned on screen
+   while the user scrolls — no ScrollTrigger pin conflict with Lenis.
+══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── scroll container ───────────────────────────────────────────── */
+.guitar-hero {
+  position: relative;
+  /* 300 vh gives ~5 s of scroll at normal speed for 60 frames.
+     Increase to 400-500 vh if you want a slower, more cinematic pace. */
+  height: 300vh;
+}
+
+/* ── pinned viewport ────────────────────────────────────────────── */
+.guitar-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Fallback colour shown before first frame loads.
+     Match this to your actual frame background silver. */
+  background: #c8c8c4;
+}
+
+/* ── canvas — fills the pinned viewport ─────────────────────────── */
+.guitar-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── text overlay — bottom-left editorial style ─────────────────── */
+.guitar-overlay {
+  position: absolute;
+  left: 60px;
+  bottom: 80px;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply; /* blends elegantly over the silver bg */
+}
+
+.guitar-overlay--ar {
+  left: auto;
+  right: 60px;
+  text-align: right;
+}
+
+.guitar-eyebrow {
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.guitar-h1 {
+  font-family: var(--ff-display);
+  font-size: clamp(40px, 5.5vw, 76px);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+}
+
+.guitar-h1 strong {
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ── scroll cue — bottom-center ─────────────────────────────────── */
+.guitar-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+  pointer-events: none;
+  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+
+.guitar-scroll-line {
+  display: block;
+  width: 1px;
+  height: 44px;
+  background: var(--ink-3);
+  transform-origin: top;
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+.guitar-scroll-label {
+  font-family: var(--ff-body);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50%       { opacity: 1;   transform: scaleY(1);   }
+}
+
+/* ── mobile ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .guitar-overlay        { left: 24px; bottom: 64px; }
+  .guitar-overlay--ar    { left: auto; right: 24px; }
+  .guitar-h1             { font-size: clamp(32px, 9vw, 52px); }
+}
