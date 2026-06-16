@@ -5,8 +5,8 @@ import { useLang } from '../context/LanguageContext'
 import './GuitarHero.css'
 
 // ── FRAME CONFIG ────────────────────────────────────────────────────────────
-// Frames live in /public/frames/ named frame_0001.jpg → frame_0076.jpg
-const FRAME_COUNT = 76
+// Frames live in /public/frames/ named frame_0001.jpg → frame_0122.jpg
+const FRAME_COUNT = 122
 const FRAME_EXT   = 'jpg'
 const frameSrc    = (i) =>
   `/frames/frame_${String(i + 1).padStart(4, '0')}.${FRAME_EXT}`
@@ -30,7 +30,7 @@ export default function GuitarHero() {
       canvas.height = canvas.offsetHeight * dpr
     }
 
-    // Draw one frame — object-fit: cover in physical pixel space
+    // Draw one frame — object-fit: cover, high-quality smoothing
     const draw = (idx) => {
       const img = imgsRef.current[idx]
       if (!img?.complete || !img.naturalWidth) return
@@ -42,15 +42,15 @@ export default function GuitarHero() {
       let dx, dy, dw, dh
 
       if (ir > cr) {
-        // image wider → fit by height, crop sides
         dh = ph; dw = ph * ir
         dx = (pw - dw) / 2; dy = 0
       } else {
-        // image taller → fit by width, crop top/bottom
         dw = pw; dh = pw / ir
         dx = 0;  dy = (ph - dh) / 2
       }
 
+      ctx.imageSmoothingEnabled = true
+      ctx.imageSmoothingQuality = 'high'
       ctx.clearRect(0, 0, pw, ph)
       ctx.drawImage(img, dx, dy, dw, dh)
     }
