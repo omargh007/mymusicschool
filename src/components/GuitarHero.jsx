@@ -5,10 +5,8 @@ import { useLang } from '../context/LanguageContext'
 import './GuitarHero.css'
 
 // ── FRAME CONFIG ────────────────────────────────────────────────────────────
-// 1. Drop your frames into /public/frames/
-// 2. Name them: frame_001.jpg, frame_002.jpg … frame_060.jpg
-// 3. Adjust FRAME_COUNT and FRAME_EXT to match
-const FRAME_COUNT = 60
+// Frames live in /public/frames/ named frame_001.jpg → frame_076.jpg
+const FRAME_COUNT = 76
 const FRAME_EXT   = 'jpg'
 const frameSrc    = (i) =>
   `/frames/frame_${String(i + 1).padStart(3, '0')}.${FRAME_EXT}`
