@@ -4,7 +4,7 @@ import { initSmoothScroll } from './lib/smoothScroll'
 import { useWatermarkParallax } from './hooks/useScrollParallax'
 import Preloader from './components/Preloader'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
+import GuitarHero from './components/GuitarHero'
 import MainService from './components/MainService'
 import WhySection from './components/WhySection'
 import Programs from './components/Programs'
@@ -27,7 +27,9 @@ function AppInner() {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) } }),
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) }
+      }),
       { threshold: 0.06 }
     )
     const timer = setTimeout(() => {
@@ -41,7 +43,7 @@ function AppInner() {
       {loading && <Preloader onDone={() => setLoading(false)} />}
       <Nav />
       <main>
-        <Hero />
+        <GuitarHero />
         <MainService />
         <WhySection />
         <Programs />
