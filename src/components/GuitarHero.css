@@ -8,9 +8,9 @@
 /* ── scroll container ───────────────────────────────────────────── */
 .guitar-hero {
   position: relative;
-  /* 300 vh gives ~5 s of scroll at normal speed for 60 frames.
-     Increase to 400-500 vh if you want a slower, more cinematic pace. */
-  height: 300vh;
+  /* 450vh gives room for the guitar rotation plus four crossfading
+     text scenes. Increase further for an even slower, more cinematic pace. */
+  height: 450vh;
 }
 
 /* ── pinned viewport ────────────────────────────────────────────── */
@@ -34,20 +34,67 @@
   display: block;
 }
 
+/* ── top tag — small label above the guitar, one per scene ──────── */
+.guitar-tags {
+  position: absolute;
+  top: 96px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.guitar-tag {
+  position: absolute;
+  font-family: var(--ff-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  background: var(--ivory);
+  padding: 7px 18px;
+  border: 1px solid var(--border-d);
+  border-radius: 999px;
+  box-shadow: 0 2px 12px rgba(12, 12, 10, 0.06);
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  will-change: opacity, transform;
+}
+
 /* ── text overlay — bottom-left editorial style ─────────────────── */
 .guitar-overlay {
   position: absolute;
   left: 60px;
   bottom: 80px;
   z-index: 2;
+  width: min(560px, calc(100vw - 120px));
   pointer-events: none;
-  mix-blend-mode: multiply; /* blends elegantly over the silver bg */
 }
 
 .guitar-overlay--ar {
   left: auto;
   right: 60px;
   text-align: right;
+}
+
+/* ── stacked scenes — only one is meaningfully visible at a time,
+   JS drives opacity + translateY per scroll progress for the crossfade ── */
+.guitar-stage {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  will-change: opacity, transform;
+}
+
+.guitar-overlay--ar .guitar-stage {
+  left: auto;
+  right: 0;
 }
 
 .guitar-eyebrow {
@@ -58,7 +105,7 @@
   text-transform: uppercase;
   color: var(--ink-2);
   margin-bottom: 14px;
-  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  text-shadow: 0 1px 10px rgba(240, 240, 238, 0.6);
 }
 
 .guitar-h1 {
@@ -68,7 +115,7 @@
   color: var(--ink);
   line-height: 1.08;
   letter-spacing: -0.5px;
-  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+  text-shadow: 0 1px 14px rgba(240, 240, 238, 0.6);
 }
 
 .guitar-h1 strong {
@@ -88,7 +135,8 @@
   gap: 10px;
   z-index: 2;
   pointer-events: none;
-  animation: heroFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 .guitar-scroll-line {
@@ -119,4 +167,6 @@
   .guitar-overlay        { left: 24px; bottom: 64px; }
   .guitar-overlay--ar    { left: auto; right: 24px; }
   .guitar-h1             { font-size: clamp(32px, 9vw, 52px); }
+  .guitar-tags           { top: 96px; }
+  .guitar-tag            { font-size: 9px; padding: 5px 13px; }
 }
